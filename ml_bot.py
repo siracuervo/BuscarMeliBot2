@@ -215,9 +215,8 @@ def main() -> int:
         if not html:
             break
 
-        # Descomentar esta línea si necesitás inspeccionar el HTML real
-        # para ajustar los selectores de parse_cards():
-        # Path("debug.html").write_text(html, encoding="utf-8")
+        # Guardamos el HTML crudo para poder diagnosticar los selectores.
+        Path("debug.html").write_text(html, encoding="utf-8")
 
         listings = parse_cards(html)
         print(f"[INFO] página {page + 1}: {len(listings)} publicaciones encontradas.")
