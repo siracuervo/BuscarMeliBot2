@@ -32,6 +32,14 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python ml_bot.py
 
+      - name: Subir HTML de diagnóstico
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-html
+          path: debug.html
+          retention-days: 3
+
       - name: Guardar historial de publicaciones vistas
         run: |
           git config user.name "ml-onix-bot"
